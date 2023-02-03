@@ -15,8 +15,5 @@ bikeshare_2.py
 new_york_city.csv
 washington.csv
 
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
 ###about me 
 Emad Ibrahim Alaqeel Customer Data Mangment at NWC

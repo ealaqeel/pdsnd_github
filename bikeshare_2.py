@@ -1,4 +1,4 @@
-import time 
+import time
 import pandas as pd
 import numpy as np
 
@@ -17,18 +17,18 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). 
-    city = input('Please, Enter the city: ')
+    # get user input for city (chicago, new york city, washington).
+    city = input('Please, Enter the city name: ')
     while city not in ['chicago', 'new york city', 'washington']:
         city = input ("CHOOSE BETWEEN chicago, new york city OR washington: ").lower()
 
     # get user input for month (all, january, february, ... , june)
-    month = input('Please, Enteer month: ').lower()
+    month = input('Please, Enteer month of the year: ').lower()
     while month not in ['all','january', 'february', 'march', 'april', 'may', 'june']:
         month = input('ENTER MONTH january, february, ... , june : ').lower()
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input('Please, Enter day: ').lower()
+    day = input('Please, Enter day of the week: ').lower()
     while day not in ['wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'monday', 'tuesday']:
         day = input('ENTER MONTH sunda, monday, ... , friday : ').lower()
     
@@ -48,12 +48,12 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     #load intended file into a data frame
-    
+
     df = pd.read_csv('{}.csv'.format(city))
 
     #converting  columns of Start Time and End Time into a date format  which is yyyy-mm-dd..
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     df['End Time'] = pd.to_datetime(df['End Time'])
 
     #Extracting month from Start Time into new column called we call it month..
@@ -64,7 +64,7 @@ def load_data(city, month, day):
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        
+
         month = months.index(month) + 1
 
         # filter by month to create the new dataframe
@@ -113,7 +113,7 @@ def station_stats(df):
 
     # display most frequent combination of start station and end station trip
     print("The most frequent combination of start station and end station trip")
-    
+
     the_most_common_start_and_end_stations = df.groupby(['Start Station', 'End Station']).size().nlargest(1)
     print(the_most_common_start_and_end_stations)
 
@@ -129,8 +129,8 @@ def trip_duration_stats(df):
 
     # display total travel time
     total_duration = df['Trip Duration'].sum() / 3600.0
-    
-    
+
+
     print("total travel time in hours is: ", total_duration)
 
     # display mean travel time
@@ -160,34 +160,34 @@ def user_stats(df,city):
         print(gender)
     except:
         print('Counts of Each User Gender:\nSorry, no gender data available for {} City'.format(city.title()))
-      
+
     # Display earliest, most recent, and most common year of birth
     try:
         earliest = df['Birth Year'].min() #Oldest birth year
         recent = df['Birth Year'].max() #Youngest birth Year
-        common = df['Birth Year'].mode() #This gives the Common Birth Year 
+        common = df['Birth Year'].mode() #This gives the Common Birth Year
         print(' ' * 40)
         print('Counts of User Birth Year:')
         print('Oldest User(s) Birth Year: ', int(earliest))
         print('Youngest User(s) Birth Year: ', int(recent))
         print('Most Common Birth Year: ', int(common))
     except:
-        
+
         print('Counts of User Birth Year:\nSorry, no birth year data available for {} City'.format(city.title()))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    
+
     print('-'*40)
 
 def raw_data (df):
     """ Heare we 5 rows will added in each press"""
     print('Please enter or enter ''no'' if you want to skip: ')
     p = 0
-    
+
 
     while (input()!= 'no'): # keep looping until he enters no..
-    
-        p = p+5 
+
+        p = p+5
         print(df.head(p))
 
 

@@ -191,6 +191,7 @@ def raw_data (df):
         print(df.head(p))
 def printinfo():
     print("l love data and programing")
+    print("no mater how old iam")
 
 
 

@@ -31,7 +31,7 @@ def get_filters():
     day = input('Please, Enter day of the week: ').lower()
     while day not in ['wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'monday', 'tuesday']:
         day = input('ENTER MONTH sunda, monday, ... , friday : ').lower()
-    
+
 
     print('-'*40)
     return city, month, day
@@ -189,6 +189,9 @@ def raw_data (df):
 
         p = p+5
         print(df.head(p))
+def printinfo():
+    print("l love data and programing")
+
 
 
 def main():
